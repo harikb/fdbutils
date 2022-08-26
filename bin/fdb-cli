@@ -1,0 +1,2 @@
+#!/bin/bash
+fdbcli --tls-verify-peers "Check.Valid=0" --tls-certificate-file /etc/foundationdb/pki/client-server.crt --tls-key-file /etc/foundationdb/pki/client-server.key --tls-ca-file /etc/foundationdb/pki/ca.crt "$@"
