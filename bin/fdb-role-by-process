@@ -1,0 +1,2 @@
+#!/bin/bash
+jq --arg delim ':' '.cluster.processes | map({roles: .roles[].role, address: .address | (split(":")[0:2] | join($delim))})' | jq --arg delim ',' 'group_by(.address) | map({address: .[0].address, roles: (map(.roles) | unique | join($delim))})'
