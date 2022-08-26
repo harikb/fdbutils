@@ -3,6 +3,12 @@ Misc foundationdb related scripts / hacks
 
 # Install
 
+## Install `jq` 
+
+Install `jq` first. Use `apt` or `brew` or See https://stedolan.github.io/jq/ 
+
+## Add fdbutils checkout to your $PATH
+
 git clone https://github.com/harikb/fdbutils.git 
 
 export PATH=/path/to/bin:${PATH}
