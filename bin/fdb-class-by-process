@@ -1,0 +1,2 @@
+#!/bin/bash
+jq --arg delim ':' '.cluster.processes | map({class_types: .class_type, address: .address | (split(":")[0:2] | join($delim))})' 

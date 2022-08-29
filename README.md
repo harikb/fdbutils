@@ -27,7 +27,7 @@ Include any local customization and make sure it runs
 
 # Usage
 
-## Show role by IP
+## Show role by IP (NOTE: does not inclulde backup roles - unknown reason)
 
 	$ fdb-status | fdb-role-by-ip | fdb-unfold
 	{"address":"10.0.0.10","roles":"cluster_controller,commit_proxy,data_distributor,grv_proxy,master,ratekeeper"}
@@ -45,7 +45,7 @@ Include any local customization and make sure it runs
 	{"address":"10.0.2.14","roles":"log,storage"}
 	{"address":"10.0.2.15","roles":"storage"}
 
-## Show role by process
+## Show role by process (NOTE: does not inclulde backup roles - unknown reason)
 
 	$ fdb-status | fdb-role-by-process | fdb-unfold | head
 	{"address":"10.0.0.10:4500","roles":"commit_proxy"}
@@ -58,4 +58,19 @@ Include any local customization and make sure it runs
 	{"address":"10.0.0.10:4507","roles":"commit_proxy"}
 	{"address":"10.0.0.11:4500","roles":"grv_proxy"}
 	{"address":"10.0.0.11:4501","roles":"resolver"}
+
+## Show class by IP  (does include backup nodes too)
+
+	$ fdb-status | fdb-class-by-ip | fdb-unfold | grep backup
+	{"address":"10.0.0.17","class_types":"backup"}
+	{"address":"10.0.0.18","class_types":"backup"}
+	{"address":"10.0.2.17","class_types":"backup"}
+	{"address":"10.0.2.18","class_types":"backup"}
+
+## Show class by process  (does include backup nodes too)
+
+	$ fdb-status | fdb-class-by-process | fdb-unfold | grep log | head -n 3
+	{"class_types":"log","address":"10.0.2.11:4504"}
+	{"class_types":"log","address":"10.0.1.10:4502"}
+	{"class_types":"log","address":"10.0.0.11:4504"}
 

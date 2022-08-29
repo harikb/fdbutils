@@ -1,0 +1,2 @@
+#!/bin/bash
+jq --arg delim ':' '.cluster.processes | map({class_types: .class_type, address: .address | split(":")[0]})' | jq --arg delim ',' 'group_by(.address) | map({address: .[0].address, class_types: (map(.class_types) | unique | join($delim))})'
