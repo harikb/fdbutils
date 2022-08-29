@@ -13,7 +13,7 @@ git clone https://github.com/harikb/fdbutils.git
 
 export PATH=/path/to/bin:${PATH}
 
-# Fix fdb-cli wrapper
+# Adjust fdb-cli wrapper
 
 Include any local customization and make sure it runs
 
